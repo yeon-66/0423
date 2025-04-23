@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReMed Bio</title>
+  <style>
+    html { background-color: black; word-break: keep-all; scroll-behavior: smooth; }
+    body, h1, h2, p, ol, ul { margin:0; padding:0; }
+
+    .wrapback { width:100vw; height: 645px; background-color: blueviolet; }
+    .wrapwhite { width:1125px; height:645px; background-color: white; margin-left: 135px; padding-left: 100px; }
+    h2 { padding-top: 80px; padding-bottom: 30px; line-height: 1.3; font-size: 28px; text-align: left; }
+    h4 { margin-top:5px; margin-bottom: 120px }
+    .square2 {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 55px;
+      background-color: white;
+      padding-left: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .service-item {
+      flex: 1 1 0;
+      min-width: 220px;
+      max-width: 320px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .service-item h5 {
+      font-size: 1.2em;
+      color:#0000FF;
+      margin-bottom: 40px;
+      margin-top: 0;
+      font-weight: bold;
+      text-align: left;
+    }
+    .service-item p {
+      font-size: 0.9em;
+      color: #767676;
+      margin: 0;
+      text-align: left;
+    }
+    .wrapbackL { width:100vw; height: 1150px; background-color: blueviolet; }
+    .wrapbackF { width:100vw; height: 217px; background-color:greenyellow; }
+    .wrapnav { width:100vw; height:43px; background-color: black; padding:10px 0 5px; }
+    .wraptran { width:1125px; height:645px; margin-left: 135px; padding-left: 100px;  overflow: hidden;background: #111;display: flex;justify-content: center;align-items: center;}
+    .wrapwhite1 { width:1125px; height:1150px; background: linear-gradient(180deg, #fff 0%, #fff 0%, #616161 52%, #000 100%); margin-left: 135px; padding-left: 100px; }
+    .wrapblack { width:1125px; height:645px; background-color: black; color:white; padding-left: 100px; margin-left: 135px; position: relative; }
+     .wrapneon, .wrapneonB {
+      width:1125px; background-color:greenyellow; padding-left: 100px; margin-left:135px; position: relative; overflow: hidden;
+    }
+    .wrapneon { width:1125px; height:645px; background-color:greenyellow; padding-left: 100px; margin-left:135px; }
+    .wrapneonB {
+      width:1125px; height:1700px; background-color:greenyellow;
+      padding-left: 100px; margin-left:135px; color:blue;
+      position: relative; overflow: hidden;
+    }
+    .wrapneonK { width:1125px; height:1000px; background-color:greenyellow; padding-left: 100px; margin-left:135px; }
+    .wrapgrad { width:1125px; height:800px; background: radial-gradient(circle, #fff 0%, #fff 48%, #000 100%); padding-left: 100px; margin-left:135px; }
+    .wrapfooter { background-color: greenyellow; margin-left:135px; padding-left: 25px; line-height:1.5; color:blue; padding-top:0; padding-bottom:20px; width:1200px; }
+    .flex { display: flex; justify-content: space-between; margin-right: 80px; align-items: center; }
+    .flexM { display: flex; align-items: center; }
+    .flexmd { display: flex; align-items: center; }
+    .flexheal { display: flex; align-items: center; }
+    .centertext { text-align: center; margin-right: 100px; }
+    .square { width:420px; height: 530px; background-color: grey; margin-top: 30px; margin-bottom: 60px; margin-right: 40px; }
+    h1 { color: black; text-align:left; margin-left:135px; line-height: 1.5 }
+    nav { padding-top: 0; padding-bottom: 5px; position:fixed; width:100vw;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(255,255,255,0.2));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 32px 0 rgba(31,38,135,0.1);
+      z-index: 100;
+    }
+    h3 { padding-left: 650px; padding-top: 355px; }
+    ul { list-style: none; padding-left: 0; }
+    ul li a { text-decoration: none; display: block; padding:8px 12px; color:white; }
+    ul li a:hover { background:greenyellow; color:#0000FF; transition: all 0.5s;border-radius:8px }
+    p { line-height: 1.6; }
+    img { display: block; }
+    .img-large { width:1000px; height:1000px; padding-top: 200px; padding-bottom: 50px; }
+    .img-small { width:400px; height: 400px; padding-top: 40px; padding-right: 190px; padding-bottom: 20px; }
+    .overlay { position: absolute; top: 43px; left: 0; padding-left: 100px; margin-left:0px; width: 1126px; height: 602px; background-color: rgba(0, 0, 0, 0.5); z-index: 0; }
+    .wrapblack > *:not(.overlay) { position: relative; z-index: 1; }
+
+    .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+  .main-btn {
+  padding: 16px 24px;
+  font-size: 0.9em;
+  border-radius: 28px;
+  border: none;
+  background: linear-gradient(90deg, #a3ffb8 0%, #d2ffd6 100%);
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  margin-bottom: 20px;
+}
+.main-btn:hover {
+  background: linear-gradient(90deg, #6ee7b7 0%, #a7f3d0 100%);
+  color: #006644;
+  transform: translateY(-2px) scale(1.04);
+}
+
+  .bubble-area {
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255,255,255,0.9) 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        rgba(255,255,255,0.1) 100%);
+      box-shadow: 0 4px 15px rgba(180,180,255,0.15);
+      animation: bubble-rise 8s linear forwards;
+      filter: blur(1px);
+      opacity: 0.8;
+    }
+    @keyframes bubble-rise {
+      0% { transform: translateY(0) scale(0.7); opacity: 0.8; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(-1700px) scale(0.4) translateX(var(--drift, 0px)); opacity: 0.1; }
+    }
+     .wrapneonB img { position: relative; z-index: 2; }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrapnav">
+      <div class="flex">
+        <div class="logo">
+          <h1><span style="color:white; padding:0;">ReMed Bio</span></h1>
+        </div>
+        <ul class="flex">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#ingredient">Ingredient</a></li>
+          <li><a href="#kit">Kit</a></li>
+          <li><a href="#review">Review</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="intro" class="wrapback"style="background-color: black;">
+    <div class="wrapblack" style="background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTF4Z2RhbzV2N2t4NzB0OTJzdXJiN3o4bDd3dWczaWMxNzBzeDEwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/555tkRlHDlhwxXEDTZ/giphy.gif'); background-size: cover;">
+      <div class="overlay"></div>
+      <h2 style="font-size: 38px;">반복되는 일상 속에, 당신의 마음은<br>얼마나 잘 챙기고 있나요?</h2>
+      <h3 style="font-size: 24px;">매일매일 해야 할 일만 챙기고 있진 않나요?</h3>
+    </div>
+  </section>
+
+  <section class="wrapback"style="background-image:url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWF0a21yZjljNzZ5aG1jN256endnOTc3Mm50ZHl4a3I1NzByYnhvZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dWIL4na2N5OtBe8AqN/giphy.gif'); background-size:cover";>
+    <div class="wrapneon">
+
+      <h2>ReMed Bio</h2>
+    </div>
+  </section>
+
+  <section class="wrapback">
+    <div class="wrapwhite">
+      <h2>지친 현대인들을 위한<br>마음 챙김 서비스를 제공합니다.</h2>
+      <h4 style="font-size:18px;">스스로 키워가는 건강한 일상</h4>
+      <div class="square2">
+        <div class="service-item">
+          <h5>Customer Mental Service</h5>
+          <p>마음의 병 치료부터 예방, 관리까지 소비자의 필요를 충족하는 안전하고 편리한 솔루션을 제공합니다.</p>
+        </div>
+        <div class="service-item">
+          <h5>Imagination based Development</h5>
+          <p>최신 연구 성과와 과학적 검증을 기반으로, 상상력이<br>더해진 혁신적인 제품과 서비스를 개발합니다.</p>
+        </div>
+        <div class="service-item">
+          <h5>Preservation of Memories</h5>
+          <p>감정을 수확하고, 기억을 박제하고, 순간을 저장<br>합니다. 좋았던 기억을 되살리고 부정적인 기억을
+          <br>예방하는 것을 목표로 합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ingredient" class="wrapneonB">
+    <div class="bubble-area"></div>
+    <h2>ReMed Bio는 엄선된 재료만을 사용해<br>제품을 생산하고 있습니다.</h2>
+    <img src="mshelf.png" class="img-large">
+    <h2 class="centertext"><span style="color:blue;font-size: 20px;">공격성이나 위해를 끼칠 만한 요소는 제거했으니 안심하고 만져보셔도 좋습니다.</span></h2>
+    <p class="centertext"><span style="color:blue;">그 외 다른 재료들은 실험실 견학을 신청하면 체험하실 수 있습니다.</span></p>
+  </section>
+
+  <section class="wrapback">
+    <div class="wrapwhite">
+      <!-- 추가 내용 없음 -->
+    </div>
+  </section>
+
+  <section class="wrapback"style="height:700px;">
+    <div class="wrapblack"style="height: 700px;">
+      <div class="centertext">
+        <h2 style="text-align: center;">원인 모를 우울감, 짜증에 지치셨나요?</h2>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTJua3cxemFqM3hyZ2ppY3NqanZiNGowZTFuZnViZ2hwYWFlaWM4MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7TkSOPplgsyfaxoeDa/giphy.gif" style="width:300px;height: 300px;padding-bottom: 25px;margin-left: 362px;">
+      <div class="button-group">
+        <button class="main-btn">정기 구독 49,900</button>
+        <button class="main-btn">1회용 키트 12,400</button>
+      </div>
+        <p>실험실에서 갓 나온 상품들이 당신의 감정 상태를 진단해드립니다.<br>마음 배양 키트를 사용해 당신의 감정을 키우고 분석해보세요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kit" class="wrapneonK">
+    <h2>키트 사용법</h2>
+    <p>키트는 개봉 후 1일 이내에 사용하세요. 공기와 접촉 시 변질 우려가 있습니다.<br>
+      개인의 마음과 몸을 떠난 감정은 연약합니다. 배양 후 약 24시간부터 시들기 시작하니 사진을 남겨두는 것을 잊지 마세요.<br>
+      <span style="color:darkgrey;">(감정의 종류마다 편차는 있으나, 약 36시간 후에는 무색투명한 액체로 분해됩니다.)</span>
+    </p>
+    <div class="wrapsq flexheal">
+      <div class="square">
+        <h2><span style="padding: 40px;">키트 구성품</span></h2>
+        <p><span style="padding: 40px;">환기가 가능한 곳에서 키트를 개봉합니다</span></p>
+      </div>
+      <div class="square">
+        <h2><span style="padding: 40px;">2단계</span></h2>
+        <p><span style="padding: 40px;">동봉된 용액에 인간 유래 성분을 넣고 밀봉 후 투명해질 때까지 섞어주세요.
+      </span></p>
+      </div>
+      <div class="square">
+        <h2><span style="padding: 40px;">3단계</span></h2>
+        <p><span style="padding: 40px;">완전히 투명해지면 배지 위에 용액을 여섯 방울 떨어뜨립니다.</span></p>
+      </div>
+      <div class="square">
+        <h2><span style="padding: 40px;">4단계</span></h2>
+        <p><span style="padding: 40px;">잠시 공간에서 벗어나 배양중인 감정이 혼자만의 시간을 가질 수 있게 해 주세요.</span></p>
+      </div>
+    </div>
+    <p>키트 사용 시 반드시 동봉된 사용 설명서와 유통기한을 준수하세요.<br>
+      개봉 직후 피로감, 짠 맛, 빛 번짐, 어지러움 등의 증상이 느껴진다면 즉시 키트를 밀봉하고 환기해주세요.<br>
+      <span style="color:red">주의사항을 지키지 않아 발생하는 모든 일에 (주) ReMed Bio는 책임지지 않습니다.</span>
+    </p>
+  </section>
+
+  <section class="wrapgrad">
+    <h2>현미경 이미지</h2>
+  </section>
+
+  <section class="wrapbackL">
+    <div class="wrapwhite1">
+      <h2>배양된 감정을 살펴보세요<br>색, 형태에 따라 감정들을 분류합니다</h2>
+      <div class="flexmd">
+        <img src="medium.png" class="img-small" alt="medium1">
+        <img src="medium.png" class="img-small" alt="medium2">
+      </div>
+      <div class="flexmd">
+        <img src="medium.png" class="img-small" alt="medium3">
+        <img src="medium.png" class="img-small" alt="medium4">
+      </div>
+    </div>
+  </section>
+
+  <section class="wrapwhite" id="review">
+    <h2>Review</h2>
+  </section>
+
+  <footer>
+    <div class="wrapbackF" style="background-image:url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXgyNDJpbHk0bTlyaDMzczZzeXkzdjg4OG9jMnNyNWRtNGg3NHB3cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6rz0PI1TbksG1rNk8h/giphy.gif'); background-size:110px 110px;">
+      <div class="wrapfooter">
+        <h2 style="padding-top: 40px;">ReMed Bio</h2>
+        <section>contact <br> E-Mail <br> Address</section>
+        <section>ReMed Bio &copy; 2025 Jiyeon 모든 권리보유</section>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // 버블 생성 함수
+    function setupBubbles(areaSelector, sectionSelector, riseHeight) {
+      const area = document.querySelector(areaSelector);
+      function makeBubble() {
+        const section = sectionSelector ? document.querySelector(sectionSelector) : area.parentElement;
+        const w = section.clientWidth;
+        const size = Math.random() * 50 + 18;
+        const duration = Math.random() * 4 + 8;
+        const opacity = (Math.random() * 0.4 + 0.4).toFixed(2);
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.style.width = bubble.style.height = size + 'px';
+        bubble.style.left = (Math.random() * (w - size - 40) + 20) + 'px';
+        bubble.style.opacity = opacity;
+        bubble.style.animationDuration = duration + 's';
+        bubble.style.setProperty('--drift', (Math.random()*40-20)+'px');
+        bubble.style.animationName = 'bubble-rise';
+        bubble.style.setProperty('--rise', riseHeight || 1700);
+
+        area.appendChild(bubble);
+        setTimeout(()=>{ bubble.remove(); }, duration * 1000);
+      }
+      setInterval(makeBubble, 350);
+      // 초기 버블
+      for(let i=0;i<20;i++) setTimeout(makeBubble, i*120);
+    }
+
+    // ingredient 섹션
+    setupBubbles('.wrapneonB .bubble-area', '.wrapneonB', 1700);
+    // wrapneon 섹션
+    setupBubbles('.wrapneon .bubble-area', '.wrapneon', 645);
+  </script>
+</body>
+</html>
+
+    
